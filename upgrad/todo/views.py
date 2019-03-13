@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import todo
 
+def sort(todo_list):
+	todo_list = sorted(todo_list, key=lambda l:l[1])
+	return todo_list
+	
+
 def index(request):
-	data = todo.objects.all()
-	print (data)
-	for index, item in enumerate(data):
-		print (index, item)
 	return render(request, 'index.html', { 'submit': False, 'edit_flag':False })
 
 def submit(request):
@@ -22,6 +23,8 @@ def view(request):
 	data = todo.objects.all()
 	to = [str(element) for element in list(data)]
 	todo_list = [element.split('*#*') for element in to]
+	todo_list = sort(todo_list)
+
 	return render(request, 'view.html', {'list': todo_list, 'rng': range(len(todo_list)), 'del_flag':False })
 
 def edit(request):
@@ -40,4 +43,36 @@ def delete(request):
 	data = todo.objects.all()
 	to = [str(element) for element in list(data)]
 	todo_list = [element.split('*#*') for element in to]
+	todo_list = sort(todo_list)
+
 	return render(request, 'view.html', {'list': todo_list, 'rng': range(len(todo_list)), 'del_flag':True })
+
+def done(request):
+	task_do = request.GET['taskdo']
+	time_do = request.GET['timedo']
+	query = todo.objects.get(task=task_do, time=time_do)
+	query_data = str(query).split('*#*')
+	todo.objects.filter(task=task_do, time=time_do).delete()
+	query = todo(task=query_data[0], time=query_data[1], done='y')
+	query.save()
+	data = todo.objects.all()
+	to = [str(element) for element in list(data)]
+	todo_list = [element.split('*#*') for element in to]
+	todo_list = sort(todo_list)
+
+	return render(request, 'view.html', {'list': todo_list, 'rng': range(len(todo_list)), 'del_flag':False })
+
+def notdone(request):
+	task_ndo = request.GET['taskndo']
+	time_ndo = request.GET['timendo']
+	query = todo.objects.get(task=task_ndo, time=time_ndo)
+	query_data = str(query).split('*#*')
+	todo.objects.filter(task=task_ndo, time=time_ndo).delete()
+	query = todo(task=query_data[0], time=query_data[1], done='n')
+	query.save()
+	data = todo.objects.all()
+	to = [str(element) for element in list(data)]
+	todo_list = [element.split('*#*') for element in to]
+	todo_list = sort(todo_list)
+
+	return render(request, 'view.html', {'list': todo_list, 'rng': range(len(todo_list)), 'del_flag':False })

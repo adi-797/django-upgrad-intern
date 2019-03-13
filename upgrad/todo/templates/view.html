@@ -16,20 +16,20 @@
 </div>
 {% else %}
 
-<div style="margin-left: 700px;margin-top: 20px;">
+<div style="margin-left: 550px;margin-top: 20px;">
   <div style="float: left; margin-right: 40px;border-radius: 2px;border-color: black;font-size: 30px">Task</div>
   <div style="border-radius: 2px;border-color: black;font-size: 30px">Time</div>
   <br><br>
 
 {% for item in list %}
   <div style="float: left; margin-right: 40px;font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px">  {{ item.0 }}</div>
-  <div style="font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px"> {{ item.1 }}
+  <div style="font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px"> {{ item.1 }} <br>
 
     &nbsp;&nbsp;&nbsp;
-    <form action="{% url 'edit' %}">
+    <form action="{% url 'edit' %}" style="float: left;">
       <input name="taske" placeholder=" " value="{{ item.0 }}" style="width: 0px;height: 0px;">
       <input name="timee" placeholder=" " value="{{ item.1 }}" style="width: 0px;height: 0px;">
-      <button style="float: left"><i class="fa fa-edit fa-2x icon-view" style="color: black"></i></button>
+      <button style="float: left"><i class="fa fa-edit fa-2x icon-view" style="color: black;"></i></button>
     </form>
 
     &nbsp;&nbsp;&nbsp;
@@ -38,6 +38,19 @@
       <input name="timed" placeholder=" " type="text" value="{{ item.1 }}" style="width: 0px;height: 0px">
       <button style="float: left"><i class="fa fa-trash fa-2x icon-view" style="color: red"></i></button>
     </form>
+{% if item.2 == 'n' %}
+    <form action="{% url 'done' %}">
+      <input name="taskdo" placeholder=" " type="text" value="{{ item.0 }}" style="width: 0px;height: 0px">
+      <input name="timedo" placeholder=" " type="text" value="{{ item.1 }}" style="width: 0px;height: 0px">
+      <button style="float: left"><i class="fa fa-times fa-2x icon-view" style="color: red"></i></button>
+    </form>
+{% else %}
+  <form action="{% url 'notdone' %}">
+      <input name="taskndo" placeholder=" " type="text" value="{{ item.0 }}" style="width: 0px;height: 0px">
+      <input name="timendo" placeholder=" " type="text" value="{{ item.1 }}" style="width: 0px;height: 0px">
+      <button style="float: left"><i class="fa fa-check fa-2x icon-view" style="color: green"></i></button>
+  </form>
+{% endif %}
 
   </div>
   <br>
