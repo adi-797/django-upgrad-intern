@@ -8,5 +8,6 @@ urlpatterns = [
 	path('home/', views.index, name='index'),
 	path('submit/', views.submit, name='submit'),
 	path('view/', views.view, name='view'),
-	path(r'^edit/$', views.edit)
+	path('edit/', views.edit, name='edit'),
+	path('delete/', views.delete, name='delete')
 	]

@@ -4,15 +4,45 @@
 
 {% csrf_token %}
 
+{% if del_flag == True %}
+<div align="center">
+  <h2 style="background-color: grey; padding: 4px;"> Task deleted </h2>
+</div>
+{% endif %}
+
+{% if list|length == 0 %}
+<div align="center">
+  <h3 style="background-color: grey; padding: 4px;margin-top: 20px;" align="center"> No more items to show. </h2>
+</div>
+{% else %}
+
 <div style="margin-left: 700px;margin-top: 20px;">
   <div style="float: left; margin-right: 40px;border-radius: 2px;border-color: black;font-size: 30px">Task</div>
   <div style="border-radius: 2px;border-color: black;font-size: 30px">Time</div>
   <br><br>
+
 {% for item in list %}
   <div style="float: left; margin-right: 40px;font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px">  {{ item.0 }}</div>
-  <div style="font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px"> {{ item.1 }} &nbsp;&nbsp;&nbsp;<a id="{{ forloop.counter }}" href="edit/{{ forloop.counter }}" "><i class="fa fa-edit fa-2x icon-view" style="color: black"></i></a>&nbsp;&nbsp;&nbsp;<a id='{{ forloop.counter }}' href="delete/{{ forloop.counter }}""><i class="fa fa-trash fa-2x icon-view" style="color: red"></i></a></div>
+  <div style="font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px"> {{ item.1 }}
+
+    &nbsp;&nbsp;&nbsp;
+    <form action="{% url 'edit' %}">
+      <input name="taske" placeholder=" " value="{{ item.0 }}" style="width: 0px;height: 0px;">
+      <input name="timee" placeholder=" " value="{{ item.1 }}" style="width: 0px;height: 0px;">
+      <button style="float: left"><i class="fa fa-edit fa-2x icon-view" style="color: black"></i></button>
+    </form>
+
+    &nbsp;&nbsp;&nbsp;
+    <form action="{% url 'delete' %}">
+      <input name="taskd" placeholder=" " type="text" value="{{ item.0 }}" style="width: 0px;height: 0px">
+      <input name="timed" placeholder=" " type="text" value="{{ item.1 }}" style="width: 0px;height: 0px">
+      <button style="float: left"><i class="fa fa-trash fa-2x icon-view" style="color: red"></i></button>
+    </form>
+
+  </div>
   <br>
 {% endfor %}
+{% endif %}
 </div>
 
 
