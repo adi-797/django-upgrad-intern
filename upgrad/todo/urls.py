@@ -9,5 +9,5 @@ urlpatterns = [
 	path('submit/', views.submit, name='submit'),
 	path('view/', views.view, name='view'),
 	path('edit/', views.edit, name='edit'),
-	path('delete/', views.delete, name='delete')
+	path('delete/', views.delete, name='delete'),
 	]

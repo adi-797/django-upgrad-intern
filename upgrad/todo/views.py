@@ -7,7 +7,7 @@ def index(request):
 	print (data)
 	for index, item in enumerate(data):
 		print (index, item)
-	return render(request, 'index.html', { 'submit': False })
+	return render(request, 'index.html', { 'submit': False, 'edit_flag':False })
 
 def submit(request):
 
@@ -16,7 +16,7 @@ def submit(request):
     query = todo(task=task, time=time)
     query.save()
 
-    return render(request, 'index.html', { 'submit': True })
+    return render(request, 'index.html', { 'submit': True, 'edit_flag':False })
 
 def view(request):
 	data = todo.objects.all()
@@ -25,9 +25,13 @@ def view(request):
 	return render(request, 'view.html', {'list': todo_list, 'rng': range(len(todo_list)), 'del_flag':False })
 
 def edit(request):
-	task = request.GET['taske']
-	time = request.GET['timed']
-	return HttpResponse(str(task))
+	task_e = request.GET['taske']
+	time_e = request.GET['timee']
+	query = todo.objects.get(task=task_e, time=time_e)
+	todo.objects.filter(task=task_e, time=time_e).delete()
+	query_data = str(query).split('*#*')
+
+	return render(request, 'index.html', { 'task':query_data[0], 'time':query_data[1], 'edit_flag': True })
 
 def delete(request):
 	task_d = request.GET['taskd']

@@ -1,5 +1,23 @@
 {% include 'stat/header.html' %}
 {% csrf_token %}
+{% if edit_flag == True %}
+<div class="response">
+  <p> <i class="fa fa-pencil fa-2x">Edit your task.</i> </p>
+</div>
+<div class="mainform" align="left">
+    <form action="{% url 'submit' %}" class="mainform">
+      <input type="text" name="task" placeholder="Enter task" class="input" value="{{ task }}" required>
+      <br>
+      <br>
+      <input type="time" name="time" placeholder="Enter time" class="input" value="{{ time }}" required>
+      <br>
+      <button class="btn btn-inverse" id="btn" align="center">Submit</button>
+    </form>
+</div>
+<div>
+  <a href="{% url 'view' %}" class="btn btn-default">VIEW</a>
+</div>
+{% else %}
 <div class="mainform" align="left">
     <form action="{% url 'submit' %}" class="mainform">
     	<input type="text" name="task" placeholder="Enter task" class="input" required>
@@ -17,7 +35,8 @@
 <div class="response">
   <p> <i class="fa fa-check fa-2x">Your task has been logged.</i> </p>
 </div>
-{% endif %} 
+{% endif %}
+{% endif %}
 {% include 'stat/footer.html' %}
 
 <style type="text/css">
