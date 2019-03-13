@@ -1,0 +1,47 @@
+{% include 'stat/header.html' %}
+{% csrf_token %}
+
+<div style="margin-left: 700px;margin-top: 20px;">
+  <div style="float: left; margin-right: 40px;border-radius: 2px;border-color: black;font-size: 30px">Task</div>
+  <div style="border-radius: 2px;border-color: black;font-size: 30px">Time</div>
+  <br><br>
+{% for item in list %}
+  <div style="float: left; margin-right: 40px;font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px"> {{ item.0 }}</div>
+  <div style="font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px"> {{ item.1 }} &nbsp;&nbsp;&nbsp;<a href=""><i class="fa fa-edit fa-2x icon-view" style="color: black"></i></a>&nbsp;&nbsp;&nbsp;<a href=""><i class="fa fa-trash fa-2x icon-view" style="color: red"></i></a></div>
+  <br>
+{% endfor %}
+</div>
+{% include 'stat/footer.html' %}
+
+<style type="text/css">
+	.mainform {
+  margin-top: 130px;
+  margin-left: 80px;
+  opacity: 0.8;
+  margin-bottom: 100px;
+}
+
+.input {
+	margin-left: 150px;
+	border-radius: 0px;
+	width: 200px;
+	height: 45px;
+	font-size: 24px;
+	color: black;
+}
+
+#btn {
+	background-color: black;
+	color: white;
+}
+
+.response {
+  font-size: 28px;
+  color: white;
+  margin-left: 40px;
+}
+.icon-view:hover {
+  transform: scale(1.2);
+  opacity: 0.9;
+}
+</style>

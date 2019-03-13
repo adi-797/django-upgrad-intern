@@ -1,6 +1,50 @@
 {% include 'stat/header.html' %}
 {% csrf_token %}
-<div>
-     Hello World!
+<div class="mainform" align="left">
+    <form action="submit/" class="mainform">
+    	<input type="text" name="task" placeholder="Enter task" class="input" required>
+    	<br>
+    	<br>
+    	<input type="time" name="time" placeholder="Enter time" class="input" required>
+    	<br>
+    	<button class="btn btn-inverse" id="btn" align="center">Submit</button>
+    </form>
 </div>
+<div>
+  <a href="view/" class="btn btn-default">VIEW</a>
+</div>
+{% if submit == True %}
+<div class="response">
+  <p> <i class="fa fa-check fa-2x">Your task has been logged.</i> </p>
+</div>
+{% endif %} 
 {% include 'stat/footer.html' %}
+
+<style type="text/css">
+	.mainform {
+  margin-top: 130px;
+  margin-left: 80px;
+  opacity: 0.8;
+  margin-bottom: 100px;
+}
+
+.input {
+	margin-left: 150px;
+	border-radius: 0px;
+	width: 200px;
+	height: 45px;
+	font-size: 24px;
+	color: black;
+}
+
+#btn {
+	background-color: black;
+	color: white;
+}
+
+.response {
+  font-size: 28px;
+  color: white;
+  margin-left: 40px;
+}
+</style>
