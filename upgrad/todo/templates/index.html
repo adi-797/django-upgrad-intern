@@ -1,7 +1,7 @@
 {% include 'stat/header.html' %}
 {% csrf_token %}
 <div class="mainform" align="left">
-    <form action="submit/" class="mainform">
+    <form action="{% url 'submit' %}" class="mainform">
     	<input type="text" name="task" placeholder="Enter task" class="input" required>
     	<br>
     	<br>
@@ -11,7 +11,7 @@
     </form>
 </div>
 <div>
-  <a href="view/" class="btn btn-default">VIEW</a>
+  <a href="{% url 'view' %}" class="btn btn-default">VIEW</a>
 </div>
 {% if submit == True %}
 <div class="response">

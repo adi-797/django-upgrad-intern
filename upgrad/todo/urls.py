@@ -7,5 +7,6 @@ urlpatterns = [
 	path('', views.index, name='index'),
 	path('home/', views.index, name='index'),
 	path('submit/', views.submit, name='submit'),
-	path('view/', views.view, name='view')
+	path('view/', views.view, name='view'),
+	path(r'^edit/$', views.edit)
 	]

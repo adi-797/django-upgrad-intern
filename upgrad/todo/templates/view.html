@@ -1,4 +1,7 @@
 {% include 'stat/header.html' %}
+
+
+
 {% csrf_token %}
 
 <div style="margin-left: 700px;margin-top: 20px;">
@@ -6,12 +9,35 @@
   <div style="border-radius: 2px;border-color: black;font-size: 30px">Time</div>
   <br><br>
 {% for item in list %}
-  <div style="float: left; margin-right: 40px;font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px"> {{ item.0 }}</div>
-  <div style="font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px"> {{ item.1 }} &nbsp;&nbsp;&nbsp;<a href=""><i class="fa fa-edit fa-2x icon-view" style="color: black"></i></a>&nbsp;&nbsp;&nbsp;<a href=""><i class="fa fa-trash fa-2x icon-view" style="color: red"></i></a></div>
+  <div style="float: left; margin-right: 40px;font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px">  {{ item.0 }}</div>
+  <div style="font-size: 24px;border-color: white;opacity: 1;border-width: 10px;padding: 20px"> {{ item.1 }} &nbsp;&nbsp;&nbsp;<a id="{{ forloop.counter }}" href="edit/{{ forloop.counter }}" "><i class="fa fa-edit fa-2x icon-view" style="color: black"></i></a>&nbsp;&nbsp;&nbsp;<a id='{{ forloop.counter }}' href="delete/{{ forloop.counter }}""><i class="fa fa-trash fa-2x icon-view" style="color: red"></i></a></div>
   <br>
 {% endfor %}
 </div>
+
+
+
 {% include 'stat/footer.html' %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style type="text/css">
 	.mainform {

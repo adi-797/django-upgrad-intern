@@ -16,6 +16,11 @@ def submit(request):
 
 def view(request):
 	data = todo.objects.all()
-	data = [str(element) for element in list(data)]
-	todo_list = [element.split('*#*') for element in data]
-	return render(request, 'view.html', {'list': todo_list, 'rng': range(len(todo_list))})
+	to = [str(element) for element in list(data)]
+	todo_list = [element.split('*#*') for element in to]
+	return render(request, 'view.html', {'list': todo_list, 'rng': range(len(todo_list)), 'q':data })
+
+def edit(request, id):
+	query = todo.objects.get(id=id)
+	print (query)
+	return HttpResponse(str(list(query)))
