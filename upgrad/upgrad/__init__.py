@@ -1,0 +1,1 @@
+from .celery import upgrad_celery
