@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' }" type="image/x-icon"/>
+    <title>TodoList</title>
+  </head>
+  <body>
+    <header>
+      <div class="preloader">
+         <div class="sk-spinner sk-spinner-wordpress">
+              <span class="sk-inner-circle"></span>
+         </div>
+      </div>
+      <!-- Navigation section  -->
+
+      <div class="navbar navbar-default navbar-static-top" role="navigation">
+           <div class="container">
+
+                <div class="navbar-header" style="  margin-bottom: 100px;">
+                     <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                          <span class="icon icon-bar"></span>
+                          <span class="icon icon-bar"></span>
+                          <span class="icon icon-bar"></span>
+                     </button>
+                     <h1 class="logo"> TODO APP </h1>
+                </div>
+                <div class="collapse navbar-collapse">
+                     <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
+                          <li><a href="" class="shown">Home</a></li>
+                          <li><a href="/contact" class="shown">Contact</a></li>
+                     </ul>
+                </div>
+        </div>
+      </div>
+    </header>
+    <script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/jquery.parallax.js' %}"></script>
+<script src="{% static 'js/smoothscroll.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
