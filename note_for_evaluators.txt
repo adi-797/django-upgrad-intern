@@ -1,0 +1,6 @@
+Kindly go through the following points before evaluation,
+
+1. The server used is PostgreSQL.
+2. All main features are embedded and tested.
+3. The optional features have been implemented using 'celery' but not been tested due to lack of resources.
+4. The commits are self-explanatory, plagiarism and time limit can be checked from there.
