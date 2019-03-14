@@ -11,12 +11,18 @@ def myTask():
     data = todo.objects.all()
     to = [str(element) for element in list(data)]
 	todo_list = [element.split('*#*') for element in to]
+	tasks_done = []
+	tasks_pending = []
 
 	for index in range(len(todo_list)):
 		if todo_list[index][1][:2] == hour and ((todo_list[index][1][3:5] - 10 < min) and (todo_list[index][1][3:5] + 10) > min):
 			mail(todo_list[index][0], todo_list[index][1], usermail)
 
-	# if abs(int(str(datetime.datetime.now())[-15:-13]) - intial_time) > 10:
-	# 	for index in range()
+	if abs(int(str(datetime.datetime.now())[-15:-13]) - intial_time) > 10:
+		for index in range(len(todo_list)):
+			if todo_list[i][2] == 'y':
+				tasks_done.append(todo_list[i])
+			else:
+				tasks_pending.append(todo_list[i])
 
-
+		send_alert(tasks_done, tasks_pending)

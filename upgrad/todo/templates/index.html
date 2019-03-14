@@ -2,7 +2,7 @@
 {% csrf_token %}
 {% if edit_flag == True %}
 <div class="response">
-  <p> <i class="fa fa-pencil fa-2x">Edit your task.</i> </p>
+  <p style="color: white; background-color: grey; opacity: 0.9;padding-left: 575px"> <i class="fa fa-pencil fa-2x">Edit your task.</i> </p>
 </div>
 <div class="mainform" align="left">
     <form action="{% url 'submit' %}" class="mainform">
@@ -15,7 +15,7 @@
     </form>
 </div>
 <div>
-  <a href="{% url 'view' %}" class="btn btn-default">VIEW</a>
+  <a href="{% url 'view' %}" class="btn btn-inverse" style="margin-left: 700px;margin-bottom: 50px; background-color: black; color: white">View your tasks</a>
 </div>
 {% else %}
 <div class="mainform" align="left">
@@ -28,12 +28,12 @@
     	<button class="btn btn-inverse" id="btn" align="center">Submit</button>
     </form>
 </div>
-<div>
-  <a href="{% url 'view' %}" class="btn btn-default">View your tasks</a>
+<div style="margin-right: 400px">
+  <a href="{% url 'view' %}" class="btn btn-inverse" style="margin-left: 700px;margin-bottom: 50px;background-color: black; color: white">View your tasks</a>
 </div>
 {% if submit == True %}
 <div class="response">
-  <p> <i class="fa fa-check fa-2x">Your task has been logged.</i> </p>
+  <p style="color: white;background-color: grey;opacity: 0.9;border-radius: 10px;" align="center"> <i class="fa fa-check fa-2x">Your task has been logged.</i> </p>
 </div>
 {% endif %}
 {% endif %}
@@ -42,7 +42,7 @@
 <style type="text/css">
 	.mainform {
   margin-top: 130px;
-  margin-left: 80px;
+  margin-left: 358px;
   opacity: 0.8;
   margin-bottom: 100px;
 }
@@ -59,6 +59,7 @@
 #btn {
 	background-color: black;
 	color: white;
+  opacity: 1;
 }
 
 .response {
